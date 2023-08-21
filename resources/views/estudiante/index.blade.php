@@ -15,6 +15,7 @@
             <th class="text-light" scope="col">APELLIDO PATERNO</th>
             <th class="text-light" scope="col">APELLIDO MATERNO</th>
             <th class="text-light" scope="col">CORREO</th>
+            <th class="text-light" scope="col">ACCIONES</th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +27,14 @@
                     <td>{{$estudiante->apellidopaterno}}</td>
                     <td>{{$estudiante->apellidomaterno}}</td>
                     <td>{{$estudiante->correo}}</td>
+                    <td>
+                        <form action="{{route ('estudiantes.destroy',$estudiante->id)}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <a href="/estudiantes/{{$estudiante->id}}/edit" class="btn btn-warning">Editar</a>
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
